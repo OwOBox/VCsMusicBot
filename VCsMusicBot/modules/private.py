@@ -1,8 +1,8 @@
 import logging
-from VCsMusicBot.modules.msg import Messages as tr
+from RYOMUSIC_BOT.modules.msg import Messages as tr
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from VCsMusicBot.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL,BOT_USERNAME
+from RYOMUSIC_BOT.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,SUPPORT_GROUP,UPDATES_CHANNEL,BOT_USERNAME
 logging.basicConfig(level=logging.INFO)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['start']))
@@ -22,14 +22,14 @@ def _start(client, message):
                         "Channel 📢", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "🔥 Source Code 🔥", url=f"https://{SOURCE_CODE}")
+                        "🔥 TRỢ LÝ 🔥", url=f"https://{SOURCE_CODE}")
                 ]
             ]
         ),
         reply_to_message_id=message.message_id
         )
 
-@Client.on_message(filters.command(["start","start@VCsMusicBot"]) & ~filters.private & ~filters.channel)
+@Client.on_message(filters.command(["start","start@RYOMUSIC_BOT"]) & ~filters.private & ~filters.channel)
 async def gstart(_, message: Message):
     await message.reply_text(
         f"""**{PROJECT_NAME} is online.**""",
@@ -100,7 +100,7 @@ def map(pos):
         ]
     return button
 
-@Client.on_message(filters.command(["help","help@VCsMusicBot"]) & ~filters.private & ~filters.channel)
+@Client.on_message(filters.command(["help","help@RYOMUSIC_bot"]) & ~filters.private & ~filters.channel)
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""**Hello there! I can play music in the voice chats of telegram groups & channels.**""",
@@ -114,4 +114,3 @@ async def ghelp(_, message: Message):
             ]
         ),
     )
-
